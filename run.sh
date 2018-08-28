@@ -2,6 +2,11 @@
 
 LOCUST_CMD="/usr/local/bin/locust"
 LOCUST_OPTS="-f $SCENARIO_FILE --host=$TARGET_URL"
+
+if [ "$LOCUST_CLASSES" ]; then
+    LOCUST_OPTS="$LOCUST_OPTS $LOCUST_CLASSES"
+fi
+
 LOCUST_MODE=${LOCUST_MODE:-standalone}
 
 if [ "$LOCUST_MODE" = "master" ]; then
